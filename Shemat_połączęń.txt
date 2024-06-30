@@ -1,0 +1,43 @@
+Inicjalizacja ekranu TFT: Biblioteka Adafruit_ILI9341 jest używana do obsługi ekranu TFT ILI9341 w trybie SPI. Piny MOSI, CLK i MISO są konfigurowane, aby obsługiwać komunikację SPI z ESP32.
+
+Inicjalizacja czujnika AMG8833: Biblioteka Adafruit_AMG88xx jest używana do komunikacji z czujnikiem termowizyjnym AMG8833.
+
+Interpolacja obrazu termowizyjnego: Surowe dane z czujnika AMG8833 są interpolowane do rozdzielczości ekranu TFT (320x240 pikseli) i wyświetlane na ekranie.
+
+Wyświetlanie temperatury centralnego punktu: Odczytana temperatura z centralnego punktu obrazu termowizyjnego (4,4) jest wyświetlana na ekranie TFT obok obrazu.
+
+Uwagi:
+Upewnij się, że poprawnie podłączyłeś ekran TFT do ESP32 zgodnie z pinami używanymi w kodzie.
+Możesz dostosować konfigurację ekranu (np. rotację) lub zmieniać sposób przetwarzania danych z czujnika AMG8833 w zależności od potrzeb projektowych.
+Możesz rozważyć dodanie dodatkowych funkcji, takich jak detekcja ruchu lub zapisywanie danych do karty SD, w zależności od zaawansowania projektu i jego wymagań.
+Ten kod stanowi podstawę do rozwinięcia projektu, łącząc funkcjonalność czujnika termowizyjnego AMG8833 z wyświetlaczem TFT ILI9341, obsługiwanym przez ESP32 w trybie SPI.
+
+
+Oto schemat połączeń dla projektu z użyciem czujnika termowizyjnego AMG8833, wyświetlacza TFT ILI9341 oraz płytki ESP32, gdzie wyświetlacz TFT jest podłączony w trybie SPI:
+
+Schemat połączeń:
+Płyta ESP32 (np. ESP-WROOM-32):
+
+Pin GND: Do pinu GND na AMG8833 i TFT ILI9341.
+Pin 3V3: Do pinu VCC na AMG8833 i TFT ILI9341 (zasilanie 3.3V).
+Pin 5V: Do zasilania wyświetlacza TFT ILI9341 (jeśli wymagane przez konkretny moduł TFT).
+Pin 14 (SPI SCK): Do pinu CLK na wyświetlaczu TFT ILI9341.
+Pin 13 (SPI MOSI): Do pinu MOSI na wyświetlaczu TFT ILI9341.
+Pin 27: Do pinu DC na wyświetlaczu TFT ILI9341.
+Pin 33: Do pinu RST na wyświetlaczu TFT ILI9341.
+Pozostałe piny SPI (MISO, CS): Można podłączyć, ale mogą nie być potrzebne w przypadku jednokierunkowej komunikacji (tylko MOSI i SCK są wymagane).
+Czujnik termowizyjny AMG8833:
+
+Pin GND: Do pinu GND na ESP32.
+Pin VCC: Do pinu 3V3 na ESP32.
+Pin SDA: Do pinu SDA (GPIO21 na ESP32).
+Pin SCL: Do pinu SCL (GPIO22 na ESP32).
+Wyświetlacz TFT ILI9341:
+
+Pin GND: Do pinu GND na ESP32.
+Pin VCC: Do pinu 5V na ESP32 (jeśli wymagane przez konkretny moduł TFT).
+Pin CS: Do pinu CS na ESP32 (np. GPIO14).
+Pin DC: Do pinu DC na ESP32 (np. GPIO27).
+Pin RST: Do pinu RST na ESP32 (np. GPIO33).
+Pin CLK: Do pinu SCK (SPI) na ESP32 (np. GPIO18).
+Pin MOSI: Do pinu MOSI (SPI) na ESP32 (np. GPIO23).
