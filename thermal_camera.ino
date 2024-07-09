@@ -15,7 +15,7 @@
 #define AMG88xx_PIXEL_ARRAY_SIZE 64
 
 // Create an instance of the Adafruit ILI9341 TFT library
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST, TFT_MOSI, TFT_CLK, TFT_MISO);
 
 // Create an instance of the Adafruit AMG88xx IR sensor library
 Adafruit_AMG88xx amg;
@@ -28,9 +28,13 @@ void setup() {
   Serial.println("Setup started");
 
   // Initialize TFT display
-  tft.begin();
-  tft.setRotation(3);  // Adjust rotation if needed
+  if (!tft.begin()) {
+    Serial.println("TFT initialization failed!");
+    while (1);
+  }
   Serial.println("TFT initialized");
+  tft.setRotation(3);  // Adjust rotation if needed
+  Serial.println("TFT rotation set");
 
   // Initialize AMG8833 sensor
   if (!amg.begin()) {
