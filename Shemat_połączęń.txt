@@ -1,22 +1,11 @@
-ESP32 (NodeMCU-32S)                  Adafruit ILI9341 TFT Display
- +-----------------+                  +------------------------+
- |                 |                  |                        |
- |       5V        |------------------| VCC                    |
- |                 |                  |                        |
- |       GND       |------------------| GND                    |
- |                 |                  |                        |
- |       3V3       |------------------|                         |
- |                 |                  |                        |
- |       TX (D2)   |------------------|                         |
- |                 |                  |                        |
- |       RX (D3)   |------------------|                         |
- |                 |                  |                        |
- |       SDA (D21) |------------------| MOSI                    |
- |                 |                  |                        |
- |       SCL (D22) |------------------| SCK                     |
- |                 |                  |                        |
- |                 |                  |                        |
- +-----------------+                  +------------------------+
+// Definicje pinów dla wyświetlacza TFT
+#define TFT_CS   4  
+#define TFT_DC   17  
+#define TFT_RST  16  
+#define TFT_MOSI 23  
+#define TFT_SCK  18  
+#define TFT_MISO 19  
+
 
 Adafruit AMG8833 Thermal Sensor
  +-----------------+
